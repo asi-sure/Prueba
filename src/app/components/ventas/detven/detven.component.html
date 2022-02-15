@@ -1,0 +1,99 @@
+  <table  class="table table-hover">
+    <thead class="thead-light">
+      <tr>
+      <th scope="col">#</th>
+      <th scope="col">CodPer</th>
+      <th scope="col">APELLIDOS Y NOMBRES</th>
+      <th scope="col">ESTADO</th>
+      <th scope="col">M</th>
+      <th scope="col">B</th>
+      <th scope="col">H</th>
+      <th scope="col">V</th>
+      <th scope="col">K</th>
+      </tr>
+    </thead>
+    
+    <tbody  *ngFor="let item of tpersonas">
+      <tr>
+        <th scope="row">{{1}}</th>
+        <td>{{item.codper}}</td>
+      <td>{{item.nombres}} {{item.ap}} {{item.am}}</td>
+      <td> <!-- ESTADO -->
+        <a href="javascript:void(0)" >
+          <img src="./assets/images/handup.png" width="25" height="30" alt="none"> 
+        </a>
+      </td>
+      <td> <!-- MOD-->
+        <a href="javascript:void(0)" >
+          <img src="./assets/images/mod.png" alt="none">
+        </a>
+      </td>
+      <td> <!-- DEL -->
+        <a href="javascript:void(0)" >
+          <img src="./assets/images/del.png" alt="none"> 
+        </a>
+      </td>
+      <td> <!-- RELOAD -->
+        <a href="javascript:void(0)" >
+          <img src="./assets/images/reload.png" width="25" height="25" alt="none"> 
+        </a>
+      </td>
+      <td> <!-- VER -->
+        <a href="javascript:void(0)" >
+          <img src="./assets/images/mod.png" alt="none"> 
+        </a>
+      </td>
+      <td>  <!-- KEY -->
+        <a href="javascript:void(0)" >
+          <img src="./assets/images/mod.png" alt="none">
+        </a>
+      </td>
+      </tr>
+    </tbody>
+    </table>
+    
+    <div class="list">      
+    </div>
+   
+   <!-- The Modal -->
+   <div class="modal fade" id="myModal">
+    <div class="modal-dialog">
+      <div class="modal-content">
+  
+        <!-- Modal Header -->
+        <div class="modal-header">
+          <h4 class="modal-title">Nuevo Personal</h4>
+          <button type="button" class="close" (click)="hideModal()">&times;</button>
+        </div>
+        
+        <!-- Modal body (ngSubmit)="onSubmit()" -->
+        <div class="modal-body">         
+            <form [formGroup]="registerForm"  >
+                <div class="modal-body" >  
+                  <div class="form-group row">
+                    <div class="col-md-3 text-center-div">
+                      <label>Nombres:</label>
+                    </div>  
+                    <div class="col-md-9 ml-auto">  
+                      <input type="text" formControlName="nombre" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.nombre.errors }" />
+                      <div *ngIf="submitted && f.nombre.errors" class="invalid-feedback">
+                          <p *ngIf="f.nombre.errors.required">requiere NOMBRE</p> 
+                          <p *ngIf="f.nombre.errors.minlength">Mínimo 3 char</p>
+                          <p *ngIf="f.nombre.errors.maxlength">Máximo 15 char</p>              
+                      </div>
+                    </div>  
+                  </div> <!--FIN class Form-group -->  
+              </div>      
+          </form>        
+        </div>
+  
+        <!-- Modal footer -->
+        <div class="modal-footer">
+            <button type="button" class="btn btn-danger" (click)="hideModal()">Cancelar</button>
+            <button type="button" class="btn btn-primary" (click)="sendModal()" >Guardar</button>
+          <!-- this button is hidden, used to close from typescript -->
+          <button type="button" id="close-modal" data-dismiss="modal" style="display: none">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>

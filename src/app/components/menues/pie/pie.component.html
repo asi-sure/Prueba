@@ -1,0 +1,14 @@
+<div class="row">
+  <div class="col-lg">Usuario: {{ xusuario }} </div>
+  <div class="col-lg"><small>Copyright &copy; Taller I</small></div>
+  <div class="col-lg">
+    <p *ngIf="xusuario == 'Invitado' ; else desconectar">
+      <a [routerLink] = "['/login']" class="nav-link">Conectar</a>
+    </p>
+    <ng-template #desconectar>
+      <p>
+        <a [routerLink] = "['/desconectar']" class="nav-link">Desconectar</a>
+      </p>
+    </ng-template>  
+  </div>
+</div> 
